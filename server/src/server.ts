@@ -1,5 +1,22 @@
 import app from './config/app';
 import { init as initCache } from './config/cache';
+import logger from './config/logger';
+
+process.on('uncaughtException', (e) => {
+  logger.error({
+    message: `uncaughtException`,
+    extra: e,
+  });
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (e) => {
+  logger.error({
+    message: `unhandledRejection`,
+    extra: e,
+  });
+  process.exit(1);
+});
 
 /**
  * Start Express server.
