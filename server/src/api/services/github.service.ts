@@ -101,10 +101,8 @@ export class GithubService {
       name: repositoryObject.name,
       full_name: repositoryObject.full_name,
       private: repositoryObject.private,
-      owner: {
-        login: repositoryObject.owner.login,
-        html_url: repositoryObject.owner.html_url,
-      },
+      owner_login: repositoryObject.owner.login,
+      owner_html_url: repositoryObject.owner.html_url,
       html_url: repositoryObject.html_url,
       description: repositoryObject.description,
       size: repositoryObject.size,

@@ -2,10 +2,8 @@ export type Repository = {
   name: string;
   full_name: string;
   private: boolean;
-  owner: {
-    login: string;
-    html_url: string;
-  };
+  owner_login: string;
+  owner_html_url: string;
   html_url: string;
   description: string;
   size: number;
@@ -17,4 +15,8 @@ export type Repository = {
   forks: number;
   open_issues: number;
   watchers: number;
+  owner?: {
+    login: string;
+    html_url: string;
+  };
 };
