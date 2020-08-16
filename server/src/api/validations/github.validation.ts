@@ -6,7 +6,7 @@ import * as HttpStatus from 'http-status';
 import { responseMessage, searchType } from '../../config/constants';
 
 export const SearchValidationSchema = Joi.object().keys({
-  type: Joi.string().valid(searchType.REPOSITORY, searchType.USER),
+  type: Joi.string().valid(searchType.REPOSITORY, searchType.USER).required(),
   search: Joi.string().required(),
 });
 
@@ -19,7 +19,6 @@ const validateSearch = (
 ): void => {
   const methodName = '[validateSearch]';
   const { error } = SearchValidationSchema.validate(req.body);
-  console.log(error);
 
   if (!error) return next();
 

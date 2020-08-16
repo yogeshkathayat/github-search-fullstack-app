@@ -31,13 +31,17 @@ export class GithubService {
           { headers: { Authorization: GITHUB_AUTH_STRING } },
         );
         //get user details
-        const transformedUserData = responseData.data.items.map(
-          async (user: Partial<User>) => {
-            return await this.getUserDetails(user);
-          },
-        );
+        let transformedUserData = [];
+        const promises = responseData.data.items.map((user: Partial<User>) => {
+          return this.getUserDetails(user);
+        });
+
+        transformedUserData = await Promise.all<User>(promises);
+
         //save it to redis
-        this._cacheService.setData(type + '_' + search, transformedUserData);
+        if (transformedUserData && transformedUserData.length > 0) {
+          this._cacheService.setData(type + '_' + search, transformedUserData);
+        }
         return transformedUserData;
       } else if (type === searchType.REPOSITORY) {
         //get repository data from github
@@ -45,16 +49,19 @@ export class GithubService {
           githubAPI.searchRepository + '?q=' + search,
           { headers: { Authorization: GITHUB_AUTH_STRING } },
         );
-        const transformedRepositoryData = responseData.data.items.map(
+        let transformedRepositoryData = [];
+        transformedRepositoryData = responseData.data.items.map(
           (repository: Partial<Repository>) => {
             return this.transformRepository(repository);
           },
         );
         //save it to redis
-        this._cacheService.setData(
-          type + '_' + search,
-          transformedRepositoryData,
-        );
+        if (transformedRepositoryData && transformedRepositoryData.length > 0) {
+          this._cacheService.setData(
+            type + '_' + search,
+            transformedRepositoryData,
+          );
+        }
         return transformedRepositoryData;
       }
     } catch (error) {

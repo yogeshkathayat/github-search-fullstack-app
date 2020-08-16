@@ -28,24 +28,22 @@ export class GitHubController {
    * @param {Request} req req object containing type & searchText
    * @param {Response} res response object
    */
-  public search = async (req: Request, res: Response): Promise<any> => {
+  public search = async (req: Request, res: Response): Promise<void> => {
     const methodName = '[search]';
     try {
       const { type, search } = req.body;
 
       const searchResult = await this._githubService.search(type, search);
 
-      return ResponseHandler.setResponse(
-        res,
-        HttpStatus.OK,
-        {data:searchResult},
-      );
+      return ResponseHandler.setResponse(res, HttpStatus.OK, {
+        data: searchResult,
+      });
     } catch (error) {
       logger.error(`${fileName} : ${methodName} : ${error}`);
       return ResponseHandler.setResponse(
         res,
         HttpStatus.INTERNAL_SERVER_ERROR,
-        {error:responseMessage.INTERNAL_SERVER_ERROR,},
+        { error: responseMessage.INTERNAL_SERVER_ERROR },
       );
     }
   };
@@ -53,7 +51,7 @@ export class GitHubController {
   /**
    * @description method to clear all data from cache
    */
-  public clearCache = async (req: Request, res: Response): Promise<any> => {
+  public clearCache = async (req: Request, res: Response): Promise<void> => {
     const methodName = '[clearCache]';
     try {
       await this._cacheService.delData();
@@ -63,7 +61,7 @@ export class GitHubController {
       return ResponseHandler.setResponse(
         res,
         HttpStatus.INTERNAL_SERVER_ERROR,
-        { error: responseMessage.INTERNAL_SERVER_ERROR, },
+        { error: responseMessage.INTERNAL_SERVER_ERROR },
       );
     }
   };
