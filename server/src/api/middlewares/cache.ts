@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import * as HttpStatus from 'http-status';
 import logger from '../../config/logger';
-import { responseMessage, version } from '../../config/constants';
+import { responseMessage } from '../../config/constants';
 import ResponseHandler from '../../util/responseHandler';
 import { CacheService } from '../services/cache.service';
+const fileName = '[cache.js]';
 
 const cacheService = new CacheService();
 /**
@@ -13,31 +14,23 @@ const cacheService = new CacheService();
  * @param {NextFunction} next next function
  */
 export async function cache(req: Request, res: Response, next: NextFunction) {
+  const methodName = '[cache]';
   try {
     const { type, search } = req.body;
     const key = type + '_' + search;
     let cachedData = await cacheService.getData(key);
     if (cachedData != null) {
       logger.info(`returning data from cache`);
-      return ResponseHandler.setResponse(
-        res,
-        true,
-        HttpStatus.OK,
-        responseMessage['SUCCESS'],
-        version.v1,
-        cachedData,
-      );
+      return ResponseHandler.setResponse(res, HttpStatus.OK, {
+        data: cachedData,
+      });
     } else {
       next();
     }
   } catch (error) {
-    return ResponseHandler.setResponse(
-      res,
-      false,
-      HttpStatus.INTERNAL_SERVER_ERROR,
-      `${error}`,
-      version.v1,
-      {},
-    );
+    logger.error(`${fileName} : ${methodName} : ${error}`);
+    return ResponseHandler.setResponse(res, HttpStatus.INTERNAL_SERVER_ERROR, {
+      error: responseMessage.INTERNAL_SERVER_ERROR,
+    });
   }
 }

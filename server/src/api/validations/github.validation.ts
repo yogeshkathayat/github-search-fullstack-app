@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import logger from '../../config/logger';
 import ResponseHandler from '../../util/responseHandler';
 import * as HttpStatus from 'http-status';
-import { responseMessage, version, searchType } from '../../config/constants';
+import { responseMessage, searchType } from '../../config/constants';
 
 export const SearchValidationSchema = Joi.object().keys({
   type: Joi.string().valid(searchType.REPOSITORY, searchType.USER),
@@ -27,12 +27,9 @@ const validateSearch = (
 
   return ResponseHandler.setResponse(
     res,
-    false,
     HttpStatus.BAD_REQUEST,
-    responseMessage.FAILED,
-    version.v1,
     {
-      error:'Bad Request',
+      error:responseMessage.BAD_REQUEST,
     },
   );
 };

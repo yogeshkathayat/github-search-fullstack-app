@@ -8,10 +8,7 @@ export const responseMessage: { readonly [message: string]: string } = {
   NO_RECORD_FOUND: 'No Record found',
 };
 
-export const version: { readonly [version: string]: string } = {
-  v1: 'v1.0.0',
-  v2: 'v2.0.0',
-};
+
 
 export const searchType = {
   REPOSITORY: 'repository',

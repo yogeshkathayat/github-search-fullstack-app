@@ -1,4 +1,4 @@
-import { responseMessage, version } from '../../config/constants';
+import { responseMessage } from '../../config/constants';
 import * as HttpStatus from 'http-status';
 import CustomResponse from '../../util/responseHandler';
 import { Request, Response, response } from 'express';
@@ -18,13 +18,8 @@ export class HandleError {
    * @return {*}
    */
   public notFound(req: Request, res: Response, next: any) {
-    CustomResponse.setResponse(
-      res,
-      false,
-      HttpStatus.NOT_FOUND,
-      responseMessage.NOT_FOUND,
-      version.v1,
-      {},
-    );
+    CustomResponse.setResponse(res, HttpStatus.NOT_FOUND, {
+      error: responseMessage.NOT_FOUND,
+    });
   }
 }

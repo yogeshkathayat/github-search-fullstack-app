@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import ResponseHandler from '../../util/responseHandler';
 import * as HttpStatus from 'http-status';
 import logger from '../../config/logger';
-import { responseMessage, version } from '../../config/constants';
+import { responseMessage } from '../../config/constants';
 import { GithubService } from '../services/github.service';
 import { CacheService } from '../services/cache.service';
 
@@ -37,21 +37,15 @@ export class GitHubController {
 
       return ResponseHandler.setResponse(
         res,
-        true,
         HttpStatus.OK,
-        responseMessage['SUCCESS'],
-        version.v1,
-        searchResult,
+        {data:searchResult},
       );
     } catch (error) {
       logger.error(`${fileName} : ${methodName} : ${error}`);
       return ResponseHandler.setResponse(
         res,
-        false,
         HttpStatus.INTERNAL_SERVER_ERROR,
-        `${error}`,
-        version.v1,
-        {},
+        {error:responseMessage.INTERNAL_SERVER_ERROR,},
       );
     }
   };
@@ -63,23 +57,13 @@ export class GitHubController {
     const methodName = '[clearCache]';
     try {
       await this._cacheService.delData();
-      return ResponseHandler.setResponse(
-        res,
-        true,
-        HttpStatus.OK,
-        responseMessage['SUCCESS'],
-        version.v1,
-        [],
-      );
+      return ResponseHandler.setResponse(res, HttpStatus.OK, {});
     } catch (error) {
       logger.error(`${fileName} : ${methodName} : ${error}`);
       return ResponseHandler.setResponse(
         res,
-        false,
         HttpStatus.INTERNAL_SERVER_ERROR,
-        `${error}`,
-        version.v1,
-        {},
+        { error: responseMessage.INTERNAL_SERVER_ERROR, },
       );
     }
   };

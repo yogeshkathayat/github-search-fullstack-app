@@ -8,7 +8,7 @@ const router = express.Router();
 const filmController = new GitHubController();
 
 /**
- * GET /search
+ * POST /search
  */
 router.post('/search', [validateSearch,cache],filmController.search);
 /**
