@@ -1,6 +1,6 @@
 import { promisify } from 'util';
 import { redisClient } from '../../config/cache';
-
+import { REDIS_DATA_EXPIRATION_TIME } from '../../config/vars';
 /**
  * CacheService class
  * contains methods related to
@@ -30,7 +30,7 @@ export class CacheService {
    */
   setData(key: string, data: any): void {
     try {
-      redisClient.setex(key, 3600, JSON.stringify(data));
+      redisClient.setex(key, REDIS_DATA_EXPIRATION_TIME, JSON.stringify(data));
     } catch (error) {
       throw error;
     }
@@ -40,7 +40,7 @@ export class CacheService {
    */
   async delData() {
     try {
-      const flushAllAsync = promisify(redisClient.flushAll).bind(redisClient);
+      const flushAllAsync = promisify(redisClient.flushall).bind(redisClient);
 
       await flushAllAsync();
     } catch (error) {
