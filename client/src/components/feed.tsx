@@ -1,18 +1,13 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { searchGithub } from "../store/searchResult";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Box, SimpleGrid, Spinner,useToast } from "@chakra-ui/core";
 import { SearchBar } from "./search";
 import { Repo } from "./repository";
 import { User } from "./user";
-import _ from "lodash";
 import { TUser, TRepository, TState } from "../types";
 
 export function Feed() {
   const toast = useToast();
-
-  const [search, setSearch] = useState("");
-  const [type, setType] = useState("user");
 
   const searchResults = useSelector((state: TState) => state.searchResult.data);
   const isSearching = useSelector(
@@ -21,28 +16,14 @@ export function Feed() {
   const error = useSelector(
     (state: TState) => state.searchResult.error
   );
-  const dispatch = useDispatch();
-
-  let updateState = useCallback(async (search: string, type: string) => {
-    setType(type);
-    setSearch(search);
-  }, []);
-
-  const debounceSearch = useRef(
-    _.debounce(async (search: string, type: string) => {
-      dispatch(searchGithub(search, type));
-    }, 1000)
+    const type = useSelector(
+    (state: TState) => state.searchResult.type
   );
-
-  useEffect(() => {
-    if (search) {
-      debounceSearch.current(search, type);
-    }
-  }, [search, type]);
 
   return (
     <Box maxWidth="1200px" mx="auto" alignItems="center">
-      <SearchBar onSearch={updateState} />
+      <SearchBar />
+
       {isSearching && (
         <Box alignItems="center" ml="600px">
           {" "}

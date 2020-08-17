@@ -3,5 +3,7 @@ export type TState = {
     data: [];
     error:string;
     isSearching: boolean;
+    search:string;
+    type:string;
   };
 };

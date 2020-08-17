@@ -1,4 +1,7 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect,useRef} from "react";
+import {  useDispatch } from "react-redux";
+import { searchGithub } from "../store/searchResult";
+import _ from "lodash";
 import {
   Flex,
   Box,
@@ -7,14 +10,20 @@ import {
   Input,
 } from "@chakra-ui/core";
 import { Header } from "./header";
-export function SearchBar({ onSearch }: any) {
+export function SearchBar() {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("user");
+  const dispatch = useDispatch();
+ 
 
-  console.log(search, type);
+  const debounceSearch = useRef(
+    _.debounce(async (search: string, type: string) => {
+     dispatch(searchGithub(search, type));
+    }, 1000)
+  );
   useEffect(() => {
-      onSearch(search, type);
-  }, [search, type,onSearch]);
+    debounceSearch.current(search, type);
+  }, [search, type]);
 
   return (
     <Flex alignItems="center" pt="15px" ml="400px">
