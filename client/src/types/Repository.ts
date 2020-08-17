@@ -1,9 +1,10 @@
-export type Repository = {
+export type TRepository = {
   name: string;
   full_name: string;
   private: boolean;
   owner_login: string;
   owner_html_url: string;
+  owner_avatar_url: string;
   html_url: string;
   description: string;
   size: number;

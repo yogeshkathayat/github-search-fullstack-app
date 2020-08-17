@@ -1,0 +1,1 @@
+export const GITHUB_SEARCH_API='http://localhost:3001/api/search'

@@ -10,47 +10,46 @@ import {
   Link,
 } from "@chakra-ui/core";
 import { GoStar, GoRepoForked, GoIssueOpened } from "react-icons/go";
+import { TRepository } from "../types";
 
-export function Repo() {
+export function Repo(props: TRepository) {
   return (
     <Flex borderWidth={1} rounded="5px" bg="white" alignItems="center" p="15px">
       <Flex flex={1} flexDir="column">
+        <Box mb="15px">
+          <Box mb="10px">
+            <Heading fontSize="19px" as="a" color="purple.700">
+              {props.name}
+            </Heading>
+            <Box ml="10px">
+              <Link fontSize="13px" href={props.html_url} target="_blank">
+                view repository
+              </Link>
+            </Box>
+          </Box>
+
+          <Text fontSize="14px"> {props.description}</Text>
+        </Box>
         <Flex mb="15px">
           <Image
             width="30px"
             height="30px"
             rounded="5px"
-            src="https://avatars0.githubusercontent.com/u/18413467?s=460&u=f9d95e3568f4bd20b2eee96d7993830c80c5c42e&v=4"
+            src={props.owner_avatar_url}
           />
           <Box ml="10px">
-            <Heading fontSize="16px">Yogesh Kathayat </Heading>
-            <Text fontSize="13px"> view profile </Text>
-          </Box>
-        </Flex>
-        <Box mb="15px">
-          <Box mb="10px">
-            <Heading
-              fontSize="19px"
-              as="a"
-              color="purple.700"
-            >
-              GitHunt
-            </Heading>
             <Text fontSize="14px" color="gray.600">
               Built by &middot;
               <Link
                 fontWeight={600}
-                href="https://github.com/yogeshkathayat"
+                href={props.owner_html_url}
                 target="_blank"
               >
-                Yogesh Kathayat
+                {props.owner_login}
               </Link>
             </Text>
           </Box>
-
-          <Text fontSize="14px">Hunt the most starred repository</Text>
-        </Box>
-
+        </Flex>
         <Stack isInline={true}>
           <Button
             as="a"
@@ -61,7 +60,7 @@ export function Repo() {
             iconSpacing="4px"
             _hover={{ textDecor: "none" }}
           >
-            3456
+            {props.stargazers_count}
           </Button>
           <Button
             as="a"
@@ -72,7 +71,8 @@ export function Repo() {
             iconSpacing="4px"
             _hover={{ textDecor: "none" }}
           >
-            16
+            {" "}
+            {props.forks_count}
           </Button>
           <Button
             as="a"
@@ -83,7 +83,7 @@ export function Repo() {
             iconSpacing="4px"
             _hover={{ textDecor: "none" }}
           >
-            346
+            {props.open_issues_count}
           </Button>
         </Stack>
       </Flex>

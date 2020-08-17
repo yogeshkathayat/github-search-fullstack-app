@@ -1,6 +1,8 @@
-export type User = {
+export type TUser = {
   login: string;
   url: string;
+  html_url: string;
+  avatar_url: string;
   type: string;
   name: string;
   company: string;
@@ -11,4 +13,5 @@ export type User = {
   public_gists: number;
   followers: number;
   following: number;
+
 };

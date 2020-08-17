@@ -28,7 +28,14 @@ const server = app.listen(app.get('port'), async () => {
     app.get('env'),
   );
   logger.info(`Press CTRL-C to stop\n`);
+  try{
   await initCache();
+  }catch(error){
+      logger.error({
+    message: `Redis connection failed....`,
+    extra: error,
+  });
+  }
 });
 
 export default server;

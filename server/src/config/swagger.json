@@ -101,6 +101,15 @@
       "User": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "number"
+          },
+          "html_url": {
+            "type": "string"
+          },
+          "avatar_url": {
+            "type": "string"
+          },
           "login": {
             "type": "string"
           },
@@ -142,6 +151,9 @@
       "Repository": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "number"
+          },
           "name": {
             "type": "string"
           },
@@ -156,6 +168,9 @@
             "type": "string"
           },
           "owner_html_url": {
+            "type": "string"
+          },
+          "owner_avatar_url": {
             "type": "string"
           },
 

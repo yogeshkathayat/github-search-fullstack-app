@@ -75,10 +75,13 @@ export class GithubService {
    */
   private transformUser(userObject: Partial<User>): User {
     return {
+      id:userObject.id,
       login: userObject.login,
       url: userObject.url,
       type: userObject.type,
       name: userObject.name,
+      html_url: userObject.html_url,
+      avatar_url: userObject.avatar_url,
       company: userObject.company,
       blog: userObject.blog,
       location: userObject.location,
@@ -98,11 +101,13 @@ export class GithubService {
     repositoryObject: Partial<Repository>,
   ): Repository {
     return {
+      id:repositoryObject.id,
       name: repositoryObject.name,
       full_name: repositoryObject.full_name,
       private: repositoryObject.private,
       owner_login: repositoryObject.owner.login,
       owner_html_url: repositoryObject.owner.html_url,
+      owner_avatar_url: repositoryObject.owner.avatar_url,
       html_url: repositoryObject.html_url,
       description: repositoryObject.description,
       size: repositoryObject.size,

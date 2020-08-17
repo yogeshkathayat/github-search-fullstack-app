@@ -1,4 +1,6 @@
+
 export type User = {
+  id: number;
   login: string;
   url: string;
   type: string;
@@ -7,6 +9,8 @@ export type User = {
   blog: string;
   location: string;
   email: string;
+  html_url: string;
+  avatar_url: string;
   public_repos: number;
   public_gists: number;
   followers: number;

@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Flex, Box, Heading, Text } from "@chakra-ui/core";
-import { FaGithub, FaChrome, FaTwitter } from "react-icons/fa";
+import {Flex, Box, Heading, Text } from "@chakra-ui/core";
+import { FaGithub} from "react-icons/fa";
 
 export function Header() {
   return (

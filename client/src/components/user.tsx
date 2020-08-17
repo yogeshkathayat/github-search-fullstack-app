@@ -14,17 +14,19 @@ import {
   GoLocation,
   GoOrganization,
 } from "react-icons/go";
-export function User() {
+import { TUser } from "../types";
+
+export function User(props:TUser) {
+
   return (
     <Flex borderWidth={1} rounded="5px" bg="white" alignItems="center" p="15px">
       <Flex flex={1} flexDir="column">
         <Flex mb="15px">
           <Box ml="10px">
-            <Heading fontSize="16px">Yogesh Kathayat </Heading>
-            {/* <Text fontSize="13px"> view profile </Text> */}
+            <Heading fontSize="16px">{props.login}</Heading>
             <Link
               fontSize="13px"
-              href="https://github.com/yogeshkathayat"
+              href={props.html_url}
               target="_blank"
             >
               view profile
@@ -44,7 +46,7 @@ export function User() {
                 iconSpacing="4px"
                 _hover={{ textDecor: "none" }}
               >
-                dubai
+               {props.location}
               </Button>
             </Text>
 
@@ -59,7 +61,7 @@ export function User() {
                 iconSpacing="4px"
                 _hover={{ textDecor: "none" }}
               >
-                mauqah
+              {props.company}
               </Button>
             </Text>
                         <Text fontSize="14px" color="gray.600">
@@ -71,14 +73,14 @@ export function User() {
                 fontSize="14px"
                 iconSpacing="2px"
                 _hover={{ textDecor: "none" }}
-              >4 Followers &middot; 5 following </Button>
+              >{props.followers} followers &middot;{props.following} following </Button>
               
             </Text>
           </Stack>
         </Box>
       </Flex>
       <Image
-        src="https://avatars0.githubusercontent.com/u/18413467?s=460&u=f9d95e3568f4bd20b2eee96d7993830c80c5c42e&v=4"
+        src={props.avatar_url}
         w={"105px"}
         h={"105px"}
         rounded="100%"
