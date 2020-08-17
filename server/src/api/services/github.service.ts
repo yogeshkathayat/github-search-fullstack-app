@@ -30,7 +30,7 @@ export class GithubService {
           githubAPI.searchUser + '?q=' + search,
           {
             headers: {
-              Authorization: GITHUB_AUTH_STRING,
+              Authorization: 'token '+GITHUB_AUTH_STRING,
               'User-Agent': 'github-searcher',
             },
           },
@@ -54,7 +54,7 @@ export class GithubService {
           githubAPI.searchRepository + '?q=' + search,
           {
             headers: {
-              Authorization: GITHUB_AUTH_STRING,
+              Authorization:'token '+GITHUB_AUTH_STRING,
               'User-Agent': 'github-searcher',
             },
           },
@@ -75,6 +75,7 @@ export class GithubService {
         return transformedRepositoryData;
       }
     } catch (error) {
+      console.log(error)
       throw error;
     }
   }
@@ -139,7 +140,7 @@ export class GithubService {
   private async getUserDetails(userObject: Partial<User>): Promise<User> {
     try {
       let userData = await axios.get(userObject.url, {
-        headers: { Authorization: GITHUB_AUTH_STRING },
+        headers: { Authorization: 'token '+GITHUB_AUTH_STRING },
       });
       return this.transformUser(userData.data);
     } catch (error) {
