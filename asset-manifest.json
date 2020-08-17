@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/github-search-fullstack-app/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/github-search-fullstack-app/static/js/main.8c950bcf.chunk.js",
-    "main.js.map": "/github-search-fullstack-app/static/js/main.8c950bcf.chunk.js.map",
+    "main.js": "/github-search-fullstack-app/static/js/main.5c6bed60.chunk.js",
+    "main.js.map": "/github-search-fullstack-app/static/js/main.5c6bed60.chunk.js.map",
     "runtime-main.js": "/github-search-fullstack-app/static/js/runtime-main.df7070b1.js",
     "runtime-main.js.map": "/github-search-fullstack-app/static/js/runtime-main.df7070b1.js.map",
     "static/js/2.51932240.chunk.js": "/github-search-fullstack-app/static/js/2.51932240.chunk.js",
     "static/js/2.51932240.chunk.js.map": "/github-search-fullstack-app/static/js/2.51932240.chunk.js.map",
     "index.html": "/github-search-fullstack-app/index.html",
-    "precache-manifest.d3e1ce74e568766a42ebc626e4c5633f.js": "/github-search-fullstack-app/precache-manifest.d3e1ce74e568766a42ebc626e4c5633f.js",
+    "precache-manifest.12c558dc4da047d98f7bc16b0cd8d167.js": "/github-search-fullstack-app/precache-manifest.12c558dc4da047d98f7bc16b0cd8d167.js",
     "service-worker.js": "/github-search-fullstack-app/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/github-search-fullstack-app/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.51932240.chunk.js.LICENSE.txt": "/github-search-fullstack-app/static/js/2.51932240.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.df7070b1.js",
     "static/js/2.51932240.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.8c950bcf.chunk.js"
+    "static/js/main.5c6bed60.chunk.js"
   ]
 }
