@@ -117,7 +117,9 @@ http://localhost:3001/api/docs  #swagger api documentation
 ## <a id="test-coverage" style="color: black;">Test Coverage</a>
 ![test-coverage](assets/coverage.png)
 
+
 ## <a id="whats-not-included" style="color: black;">What's not included</a>
 
 - Search UI transition from center to up
+- Responsiveness
 - Test cases for frontend app
