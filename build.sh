@@ -1,0 +1,1 @@
+cd client && npm i && cd ../server && npm i && rm -rf build && npm run build && cd ../client && rm -rf build && npm run build && cd ..

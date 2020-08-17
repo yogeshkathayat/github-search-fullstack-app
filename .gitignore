@@ -37,6 +37,9 @@ Thumbs.db
 # Ignore built ts files
 dist/**/*
 server/dist/
+build/**/*
+server/build/
+client/build/
 
 package-lock.json
 yarn.lock

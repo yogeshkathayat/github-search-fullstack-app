@@ -8,8 +8,8 @@
   "scripts": {
     "start": "npm run serve",
     "build": "npm run build-ts",
-    "serve": "node dist/server.js",
-    "watch-node": "nodemon dist/server.js",
+    "serve": "node build/server.js",
+    "watch-node": "nodemon build/server.js",
     "test": "jest --forceExit --coverage --verbose",
     "watch-test": "npm run test -- --watchAll",
     "build-ts": "tsc",
