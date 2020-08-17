@@ -28,7 +28,12 @@ export class GithubService {
         //get user data from github
         let responseData = await axios.get(
           githubAPI.searchUser + '?q=' + search,
-          { headers: { Authorization: GITHUB_AUTH_STRING } },
+          {
+            headers: {
+              Authorization: GITHUB_AUTH_STRING,
+              'User-Agent': 'github-searcher',
+            },
+          },
         );
         //get user details
         let transformedUserData = [];
@@ -47,7 +52,12 @@ export class GithubService {
         //get repository data from github
         let responseData = await axios.get(
           githubAPI.searchRepository + '?q=' + search,
-          { headers: { Authorization: GITHUB_AUTH_STRING } },
+          {
+            headers: {
+              Authorization: GITHUB_AUTH_STRING,
+              'User-Agent': 'github-searcher',
+            },
+          },
         );
         let transformedRepositoryData = [];
         transformedRepositoryData = responseData.data.items.map(
@@ -75,7 +85,7 @@ export class GithubService {
    */
   private transformUser(userObject: Partial<User>): User {
     return {
-      id:userObject.id,
+      id: userObject.id,
       login: userObject.login,
       url: userObject.url,
       type: userObject.type,
@@ -101,7 +111,7 @@ export class GithubService {
     repositoryObject: Partial<Repository>,
   ): Repository {
     return {
-      id:repositoryObject.id,
+      id: repositoryObject.id,
       name: repositoryObject.name,
       full_name: repositoryObject.full_name,
       private: repositoryObject.private,
