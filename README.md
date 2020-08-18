@@ -1,6 +1,7 @@
 # GitHub Searcher App
->  Full-Stack Github searcher app built using Node.js, React & TypeScript
-**Live:** http://34.70.164.151/
+>  Full-Stack Github searcher app built using Node.js, React & TypeScript.
+
+> **Live:** http://34.70.164.151/ 
 **Api-docs:** http://34.70.164.151:3000/api/docs
 > 
 ![appdemo](assets/app-demo.gif)
