@@ -1,5 +1,7 @@
 # GitHub Searcher App
 >  Full-Stack Github searcher app built using Node.js, React & TypeScript
+**Live:** http://34.70.164.151/
+**Api-docs:** http://34.70.164.151:3000/api/docs
 > 
 ![appdemo](assets/app-demo.gif)
 ## Contents
@@ -16,6 +18,7 @@
 - [Run](#run)
 - [Docs](#docs)
 - [Test Coverage](#test-coverage)
+- [What's included](#whats-included)
 - [What's not included](#whats-not-included)
 ## <a id="problem-statement" style="color: black;">Problem Statement</a>
 You are required to build a full stack application which consists of :- 
@@ -117,6 +120,23 @@ http://localhost:3001/api/docs  #swagger api documentation
 ## <a id="test-coverage" style="color: black;">Test Coverage</a>
 ![test-coverage](assets/coverage.png)
 
+## <a id="whats-included" style="color: black;">What's included</a>
+- Backend built with node.js, express & typescript
+- `api/search` api to search users/repositories from github
+- `api/clear-cache` api to clear all the cache data
+- Caching search result with searchType & searchKeywords into Redis & keep it there for 2 hours(can be configured from env)
+- Cache middleware to get data from cache if user search is present in cache.
+- Logging implented using Winston logger
+- Test cases for backend with coverage using Jest, Supertest
+- Implemented Swagger for api docs
+- types definition & uses for both frontend & backend
+- Frontend App using React & Typescript
+- Added debounce
+- Make the API calls only if the user has typed 3 or more characters
+- If the user changes the "Entity type" value in the dropdown and user has 3 or more characters in the input already, it  refreshes the results.
+- If the user clears the input or types less than three characters, clear the results and shows the empty screen
+-  Redux, Redux Toolkit and redux-persist  for state management
+- UI components using Chakra-UI
 
 ## <a id="whats-not-included" style="color: black;">What's not included</a>
 
