@@ -64,15 +64,51 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/User"
-                      },
-                      {
-                        "$ref": "#/components/schemas/Repository",
-                        "example": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/components/schemas/User"
+                          },
+                          {
+                            "$ref": "#/components/schemas/Repository"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "User": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": 55567995,
+                          "login": "tradeling",
+                          "url": "https://api.github.com/users/tradeling",
+                          "type": "Organization",
+                          "name": "Tradeling",
+                          "html_url": "https://github.com/tradeling",
+                          "avatar_url": "https://avatars2.githubusercontent.com/u/55567995?v=4",
+                          "company": null,
+                          "blog": "https://tradeling.com",
+                          "location": "Dubai, UAE",
+                          "email": "tech@tradeling.com",
+                          "public_repos": 3,
+                          "public_gists": 0,
+                          "followers": 0,
+                          "following": 0
+                        }
+                      ]
+                    }
+                  },
+                  "Repository": {
+                    "value": {
+                      "data": [
+                        {
                           "id": 219148951,
                           "name": "coding-task-devops",
                           "full_name": "tradeling/coding-task-devops",
@@ -92,55 +128,8 @@
                           "open_issues": 0,
                           "watchers": 2
                         }
-                      }
-                    ]
-                  }
-                },
-                "examples": {
-                  "User": {
-                    "value": [
-                      {
-                        "id": 55567995,
-                        "login": "tradeling",
-                        "url": "https://api.github.com/users/tradeling",
-                        "type": "Organization",
-                        "name": "Tradeling",
-                        "html_url": "https://github.com/tradeling",
-                        "avatar_url": "https://avatars2.githubusercontent.com/u/55567995?v=4",
-                        "company": null,
-                        "blog": "https://tradeling.com",
-                        "location": "Dubai, UAE",
-                        "email": "tech@tradeling.com",
-                        "public_repos": 3,
-                        "public_gists": 0,
-                        "followers": 0,
-                        "following": 0
-                      }
-                    ]
-                  },
-                  "Repository": {
-                    "value": [
-                      {
-                        "id": 219148951,
-                        "name": "coding-task-devops",
-                        "full_name": "tradeling/coding-task-devops",
-                        "private": false,
-                        "owner_login": "tradeling",
-                        "owner_html_url": "https://github.com/tradeling",
-                        "owner_avatar_url": "https://avatars2.githubusercontent.com/u/55567995?v=4",
-                        "html_url": "https://github.com/tradeling/coding-task-devops",
-                        "description": "Coding Task for DevOps @tradeling",
-                        "size": 43,
-                        "stargazers_count": 2,
-                        "watchers_count": 2,
-                        "language": "JavaScript",
-                        "forks_count": 9,
-                        "open_issues_count": 0,
-                        "forks": 9,
-                        "open_issues": 0,
-                        "watchers": 2
-                      }
-                    ]
+                      ]
+                    }
                   }
                 }
               }
